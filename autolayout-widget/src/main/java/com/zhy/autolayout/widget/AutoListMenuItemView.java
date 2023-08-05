@@ -3,38 +3,44 @@ package com.zhy.autolayout.widget;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
-
 import android.support.v7.view.menu.ActionMenuItemView;
+import android.support.v7.view.menu.ListMenuItemView;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.util.TypedValue;
-
+import android.widget.TextView;
 
 import com.zhy.autolayout.utils.AutoUtils;
 import com.zhy.autolayout.utils.DimenUtils;
+
+import java.lang.reflect.Field;
 
 /**
  * Created by hupei on 2016/3/7 14:44.
  */
 @SuppressLint("RestrictedApi")
-public class AutoActionMenuItemView extends ActionMenuItemView {
+public class AutoListMenuItemView extends ListMenuItemView {
     private static final int NO_VALID = -1;
+    private static final String TAG = "AutoListMenuItemView";
     private int mMenuTextSize;
 
-    public AutoActionMenuItemView(Context context) {
+    public AutoListMenuItemView(Context context) {
         this(context, null);
     }
 
-    public AutoActionMenuItemView(Context context, AttributeSet attrs) {
+    public AutoListMenuItemView(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public AutoActionMenuItemView(Context context, AttributeSet attrs, int defStyle) {
+    public AutoListMenuItemView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         TypedArray a = context.getTheme().obtainStyledAttributes(attrs, R.styleable.AppCompatTheme,
-                defStyle, R.style.ThemeOverlay_AppCompat);
-        int menuTextAppearance = a.getResourceId(R.styleable.AppCompatTheme_actionBarTheme,
+                defStyle, R.style.ToolBarMenuStyle);
+        int menuTextAppearance = a.getResourceId(R.styleable.AppCompatTheme_popupMenuStyle,
                 R.style.ThemeOverlay_AppCompat_ActionBar);
+        // TODO: 这波操作下来确实正确获取到了
         mMenuTextSize = loadTextSizeFromTextAppearance(menuTextAppearance);
+        Log.i(TAG, "AutoListMenuItemView:   mMenuTextSize="+mMenuTextSize);
         a.recycle();
     }
 
@@ -61,6 +67,21 @@ public class AutoActionMenuItemView extends ActionMenuItemView {
     private void setUpTitleTextSize() {
         if (mMenuTextSize == -1) return;
         int autoTextSize = AutoUtils.getPercentHeightSize(mMenuTextSize);
-        setTextSize(TypedValue.COMPLEX_UNIT_PX, autoTextSize);
+        setUpTitleTextSize("mTitleView",autoTextSize);
+    }
+
+    private void setUpTitleTextSize(String name, int val) {
+        try {
+            //反射 Toolbar 的 TextView
+            Field f = getClass().getSuperclass().getDeclaredField(name);
+            f.setAccessible(true);
+            TextView textView = (TextView) f.get(this);
+            if (textView != null) {
+                int autoTextSize = AutoUtils.getPercentHeightSize(val);
+                textView.setTextSize(TypedValue.COMPLEX_UNIT_PX, autoTextSize);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

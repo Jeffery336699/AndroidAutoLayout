@@ -120,7 +120,7 @@ public class AutoUtils
         {
             return res / designWidth;
         } else
-        {
+        {   /** 针对精度的计算采用进位法(小数部分直接进一位) */
             return res / designWidth + 1;
         }
 

@@ -42,7 +42,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="0.2dp"
-        android:background="@color/edittext_bg"/>
+        android:background="@color/btn_bg_pre"/>
 
     <LinearLayout
         android:id="@+id/weixin_pay_layout"
@@ -94,7 +94,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="0.2dp"
-        android:background="@color/edittext_bg"/>
+        android:background="@color/btn_bg"/>
 
     <LinearLayout
         android:id="@+id/zhifubao_pay_layout"
@@ -140,13 +140,14 @@
             android:layout_gravity="center_vertical"
             android:background="@drawable/selector_pay_radio"
             android:button="@null"
+            android:checked="true"
             android:clickable="false"/>
     </LinearLayout>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="0.2dp"
-        android:background="@color/edittext_bg"/>
+        android:background="@color/btn_bg"/>
 
     <TextView
         android:id="@+id/more_pay_methods"

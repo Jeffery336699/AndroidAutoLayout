@@ -32,6 +32,10 @@ public class TextSizeAttr extends AutoAttr
     {
         if (!(view instanceof TextView))
             return;
+        /**
+         * 设置了setIncludeFontPadding虽然TextView自带的上下padding去除了,但也仅仅是视觉上(存在背景的情况较明显)
+         * 还是总体View占据着茅坑,意义不是太大,可以参考TestActivity中的布局,有对setIncludeFontPadding设置与否的对比
+         */
         ((TextView) view).setIncludeFontPadding(false);
         ((TextView) view).setTextSize(TypedValue.COMPLEX_UNIT_PX, val);
     }

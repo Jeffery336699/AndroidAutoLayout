@@ -7,7 +7,7 @@ import android.util.Log;
  */
 public class L
 {
-    public static boolean debug = false;
+    public static boolean debug = true;
     private static final String TAG = "AUTO_LAYOUT";
 
     public static void e(String msg)

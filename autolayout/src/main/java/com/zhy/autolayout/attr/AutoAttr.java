@@ -53,14 +53,14 @@ public abstract class AutoAttr
             L.e(" pxVal = " + pxVal + " ," + this.getClass().getSimpleName());
         }
         int val;
-        if (useDefault())
+        if (useDefault()) // todo 该属性值并没有显示设置基于宽度还是高度,那么就看该属性在定义时它的基于哪一个(总的基于一方,eg MarginLeft --> baseWidth)
         {
             val = defaultBaseWidth() ? getPercentWidthSize() : getPercentHeightSize();
             if (log)
             {
                 L.e(" useDefault val= " + val);
             }
-        } else if (baseWidth())
+        } else if (baseWidth()) //todo 表示该属性值的参考是基于宽度(注意大前提:宽高的分别1px不相等)
         {
             val = getPercentWidthSize();
             if (log)

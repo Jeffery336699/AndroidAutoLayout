@@ -4,12 +4,15 @@
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
     </style>
+    <style name="Theme" parent="AppTheme">
+        <!-- Customize your theme here. -->
+    </style>
 
     <style name="MyCustomTabTextAppearance" parent="TextAppearance.Design.Tab">
         <item name="android:textSize">32px</item>
     </style>
     <style name="ToolBarMenuStyle" parent="ThemeOverlay.AppCompat.ActionBar">
-        <item name="actionMenuTextColor">#ff00cc00</item>
+        <item name="actionMenuTextColor">#ffcc0000</item>
         <item name="android:textSize">32px</item>
     </style>
 

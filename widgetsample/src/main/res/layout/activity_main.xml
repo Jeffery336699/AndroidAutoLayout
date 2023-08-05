@@ -19,16 +19,28 @@
 
     </com.zhy.autolayout.widget.AutoToolbar>
 
-    <android.support.design.widget.TabLayout
-        android:id="@+id/id_tablayout"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="96px"
-        android:background="#1787ff"
-        app:tabIndicatorColor="#ff4a1c"
-        app:tabSelectedTextColor="#ff4a1c"
-        app:tabTextAppearance="@style/MyCustomTabTextAppearance"
-        app:tabTextColor="#ffffff" />
+        android:layout_height="wrap_content">
 
+        <android.support.design.widget.TabLayout
+            android:id="@+id/id_tablayout"
+            android:layout_width="0dp"
+            android:layout_height="96px"
+            android:layout_weight="2"
+            android:background="#1787ff"
+            app:tabIndicatorColor="#ff4a1c"
+            app:tabSelectedTextColor="#ff4a1c"
+            app:tabTextAppearance="@style/MyCustomTabTextAppearance"
+            app:tabTextColor="#ffffff" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="96px"
+            android:layout_weight="1"
+            android:background="#a8ac89aa" />
+
+    </LinearLayout>
 
     <android.support.v4.view.ViewPager
         android:id="@+id/id_viewpager"

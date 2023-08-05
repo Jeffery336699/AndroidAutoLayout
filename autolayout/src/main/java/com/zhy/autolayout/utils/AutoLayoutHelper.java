@@ -19,6 +19,7 @@ package com.zhy.autolayout.utils;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -45,6 +46,7 @@ import com.zhy.autolayout.config.AutoLayoutConifg;
 
 public class AutoLayoutHelper
 {
+    private static final String TAG = "AutoLayoutHelper";
     private final ViewGroup mHost;
 
     private static final int[] LL = new int[]
@@ -120,7 +122,7 @@ public class AutoLayoutHelper
         {
             View view = mHost.getChildAt(i);
             ViewGroup.LayoutParams params = view.getLayoutParams();
-
+            Log.i(TAG, "adjustChildren: mHost="+(mHost.getTag()==null?mHost.getClass().getSimpleName():mHost.getTag())+" , view="+view.getTag()+" , params is AutoLayoutParams = "+(params instanceof AutoLayoutParams)+" , autoLP="+params.getClass().getCanonicalName());
             if (params instanceof AutoLayoutParams)
             {
                 AutoLayoutInfo info =

@@ -5,6 +5,7 @@ import android.content.res.TypedArray;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.util.TypedValue;
 import android.widget.TextView;
 
@@ -20,6 +21,7 @@ import java.lang.reflect.Field;
  */
 public class AutoToolbar extends Toolbar {
     private static final int NO_VALID = -1;
+    private static final String TAG = "AutoToolbar";
     private int mTextSize;
     private int mSubTextSize;
     private final AutoLayoutHelper mHelper = new AutoLayoutHelper(this);
@@ -35,12 +37,15 @@ public class AutoToolbar extends Toolbar {
         int subtitleTextAppearance = a.getResourceId(R.styleable.Toolbar_subtitleTextAppearance,
                 R.style.TextAppearance_Widget_AppCompat_Toolbar_Subtitle);
 
+        Log.i(TAG, "AutoToolbar: titleTextAppearance="+titleTextAppearance);
+        Log.i(TAG, "AutoToolbar: subtitleTextAppearance="+subtitleTextAppearance);
+
         mTextSize = loadTextSizeFromTextAppearance(titleTextAppearance);
         mSubTextSize = loadTextSizeFromTextAppearance(subtitleTextAppearance);
 
-        TypedArray menuA = context.getTheme().obtainStyledAttributes(attrs, R.styleable.Theme,
+        TypedArray menuA = context.getTheme().obtainStyledAttributes(attrs, R.styleable.AppCompatTheme,
                 defStyleAttr, R.style.ThemeOverlay_AppCompat);
-        int menuTextAppearance = menuA.getResourceId(R.styleable.Theme_actionBarTheme,
+        int menuTextAppearance = menuA.getResourceId(R.styleable.AppCompatTheme_actionBarTheme,
                 R.style.ThemeOverlay_AppCompat_ActionBar);
         int menuTextSize = loadTextSizeFromTextAppearance(menuTextAppearance);
 
@@ -98,6 +103,7 @@ public class AutoToolbar extends Toolbar {
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        // TODO: 主要是为了xml预览时避免出错,xml预览时会设置这个View的编辑模式为true
         if (!this.isInEditMode()) {
             setUpTitleTextSize();
             this.mHelper.adjustChildren();

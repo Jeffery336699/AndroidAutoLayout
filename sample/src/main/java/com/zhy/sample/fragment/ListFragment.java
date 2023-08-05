@@ -35,8 +35,8 @@ public class ListFragment extends Fragment
     {
         mContext = getActivity();
         mlistview = (ListView) mView.findViewById(R.id.id_listview);
-        mList = new ArrayList<String>();
-        for (int i = 0; i < 50; i++)
+        mList = new ArrayList<>();
+        for (int i = 0; i < 3; i++)
         {
             mList.add(i + "");
         }
@@ -82,22 +82,20 @@ public class ListFragment extends Fragment
         @Override
         public View getView(int position, View convertView, ViewGroup parent)
         {
-            ViewHolder holder = null;
+            // ViewHolder holder = null;
             if (convertView == null)
             {
-                holder = new ViewHolder();
+                // holder = new ViewHolder();
                 convertView = LayoutInflater.from(mContext).inflate(R.layout.list_item, parent, false);
-                convertView.setTag(holder);
+                // convertView.setTag(holder);
                 //对于listview，注意添加这一行，即可在item上使用高度
                 AutoUtils.autoSize(convertView);
             } else
             {
-                holder = (ViewHolder) convertView.getTag();
+                // holder = (ViewHolder) convertView.getTag();
             }
-
             return convertView;
         }
-
     }
 
     class ViewHolder

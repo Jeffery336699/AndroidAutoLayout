@@ -5,6 +5,7 @@
     >
 
     <ListView
+        android:tag="内部 - listView"
         android:id="@+id/id_listview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

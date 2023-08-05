@@ -3,6 +3,7 @@
     android:id="@+id/title_parentlayout"
     android:layout_width="match_parent"
     android:layout_height="130px"
+    android:tag="Activity标题栏RelativeLayout"
     android:background="#ff6600" >
 
     <TextView
@@ -12,6 +13,7 @@
         android:layout_centerVertical="true"
         android:gravity="center_vertical"
         android:text="左侧文字"
+        android:tag="Activity标题栏RelativeLayout--中间文字"
         android:textColor="@android:color/white"
         android:textSize="52px"
         android:visibility="gone" />
@@ -20,6 +22,7 @@
         android:id="@+id/title_leftimageview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:tag="Activity标题栏RelativeLayout--左边箭头"
         android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"
         android:src="@drawable/login_fanhui" />

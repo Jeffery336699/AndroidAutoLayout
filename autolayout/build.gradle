@@ -1,16 +1,16 @@
 apply plugin: 'com.android.library'
-apply plugin: 'com.github.dcendents.android-maven'
+//apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
 
 version = "1.4.5"
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.1"
+    compileSdkVersion 26
+    buildToolsVersion "26.0.0"
 
     defaultConfig {
-        minSdkVersion 7
-        targetSdkVersion 23
+        minSdkVersion 21
+        targetSdkVersion 26
         versionCode 1
         versionName "1.0"
     }
@@ -22,11 +22,17 @@ android {
     }
 }
 
+repositories {
+    flatDir {
+        dirs 'libs'
+    }
+}
+
 def siteUrl = 'https://github.com/hongyangAndroid/AndroidAutoLayout'                        // #CONFIG# // project homepage
 def gitUrl = 'https://github.com/hongyangAndroid/AndroidAutoLayout.git'                     // #CONFIG# // project git
 group = "com.zhy"
 
-install {
+/*install {
     repositories.mavenInstaller {
         // This generates POM.xml with proper parameters
         pom {
@@ -91,10 +97,12 @@ bintray {
         licenses = ["Apache-2.0"]
         publish = true
     }
-}
+}*/
 
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:appcompat-v7:23.0.1'
+    implementation fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
+//    api(name:'support-v4-26.1.0', ext:'aar')
+    implementation 'com.android.support:appcompat-v7:26.1.0'
+//    api 'com.android.support:appcompat-v4:26.1.0'
 }

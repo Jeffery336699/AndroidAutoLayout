@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- 消客的列表 -->
 <RelativeLayout
+    android:tag="listView --  Item -- 容器"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
@@ -8,6 +9,7 @@
     android:orientation="vertical" >
 
     <ImageView
+        android:tag="item-imageView"
         android:layout_width="169px"
         android:layout_height="169px"
         app:layout_auto_baseheight="width"
@@ -16,6 +18,7 @@
         android:src="@drawable/tuijian_touxiang6" />
 
     <TextView
+        android:tag="item-TextView"
         android:id="@+id/xiaoke_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -25,6 +28,7 @@
         android:textSize="48px" />
 
     <TextView
+        android:tag="item-TextView"
         android:id="@+id/xiaoke_people_nums"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -35,6 +39,7 @@
         android:textSize="40px" />
 
     <TextView
+        android:tag="item-TextView"
         android:id="@+id/xiaoke_phone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -45,6 +50,7 @@
         android:textSize="38px" />
 
     <TextView
+        android:tag="item-TextView"
         android:id="@+id/xiaoke_saleprice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

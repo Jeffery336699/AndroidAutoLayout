@@ -18,58 +18,50 @@ import com.zhy.sample.view.DividerItemDecoration;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RecyclerViewFragment extends Fragment
-{
+public class RecyclerViewFragment extends Fragment {
     private View mView;
     private RecyclerView mRecyclerView;
     private List<String> mList;
     private Context mContext;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
-    {
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mView = inflater.inflate(R.layout.fragment_recyclerview, container, false);
         initView();
         return mView;
     }
 
-    private void initView()
-    {
+    private void initView() {
         mContext = getActivity();
         mRecyclerView = (RecyclerView) mView.findViewById(R.id.id_recyclerview);
-        mList = new ArrayList<String>();
-        for (int i = 0; i < 50; i++)
-        {
+        mList = new ArrayList<>();
+        for (int i = 0; i < 50; i++) {
             mList.add(i + "");
         }
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        mRecyclerView.setAdapter(new MyAdapter(getActivity(),mList));
+        mRecyclerView.setAdapter(new MyAdapter(getActivity(), mList));
 
         mRecyclerView.addItemDecoration(new DividerItemDecoration(getActivity(),
                 DividerItemDecoration.VERTICAL_LIST));
     }
 
-    class MyAdapter extends CommonAdapter<String>
-    {
-        public MyAdapter(Context context, List<String> datas)
-        {
+    class MyAdapter extends CommonAdapter<String> {
+        public MyAdapter(Context context, List<String> datas) {
             super(context, R.layout.recyclerview_item, datas);
         }
 
         @Override
-        public com.zhy.base.adapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
-        {
+        public com.zhy.base.adapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             com.zhy.base.adapter.ViewHolder viewHolder = super.onCreateViewHolder(parent, viewType);
+            /** 主要是为了规范化convertView的外层width、height的值(如果设置了具体px值的话),该容器的值规范好了,子类自然也跟着不会出错 */
             AutoUtils.autoSize(viewHolder.getConvertView());
             return viewHolder;
         }
 
         @Override
-        public void convert(com.zhy.base.adapter.ViewHolder viewHolder, String s)
-        {
+        public void convert(com.zhy.base.adapter.ViewHolder viewHolder, String s) {
         }
     }
-
 
 
 }

@@ -16,7 +16,6 @@ public class MainActivity extends AutoLayoutWidgetActivity {
     private TabLayout mTabLayout;
     private ViewPager mViewPager;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +23,7 @@ public class MainActivity extends AutoLayoutWidgetActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("标题");
+        toolbar.setSubtitle("子标题");
         setSupportActionBar(toolbar);
         mTabLayout = (TabLayout) findViewById(R.id.id_tablayout);
         mViewPager = (ViewPager) findViewById(R.id.id_viewpager);
@@ -41,7 +41,7 @@ public class MainActivity extends AutoLayoutWidgetActivity {
 
             @Override
             public CharSequence getPageTitle(int position) {
-                return "Page " + position;
+                return "子标题 " + position;
             }
         });
 
